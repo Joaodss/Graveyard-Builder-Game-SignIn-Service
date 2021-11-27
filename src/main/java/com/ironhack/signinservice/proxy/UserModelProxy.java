@@ -1,6 +1,7 @@
 package com.ironhack.signinservice.proxy;
 
 import com.ironhack.signinservice.dto.RegisterUserDTO;
+import com.ironhack.signinservice.dto.UserAuthDTO;
 import com.ironhack.signinservice.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -22,5 +23,8 @@ public interface UserModelProxy {
 
     @PostMapping("/register")
     UserDTO registerUser(@RequestBody @Valid RegisterUserDTO registerUserDTO);
+
+    @GetMapping("/auth/{username}")
+    ResponseEntity<UserAuthDTO> getUserAuth(@PathVariable String username);
 
 }

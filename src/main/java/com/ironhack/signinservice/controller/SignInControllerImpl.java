@@ -1,8 +1,10 @@
 package com.ironhack.signinservice.controller;
 
-import com.ironhack.signinservice.dto.*;
+import com.ironhack.signinservice.dto.EmailDTO;
+import com.ironhack.signinservice.dto.RegisterUserDTO;
+import com.ironhack.signinservice.dto.UserDTO;
+import com.ironhack.signinservice.dto.UsernameDTO;
 import com.ironhack.signinservice.service.RegisterService;
-import com.ironhack.signinservice.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +18,8 @@ import static org.springframework.http.HttpStatus.OK;
 @RequiredArgsConstructor
 @Slf4j
 public class SignInControllerImpl implements SignInController {
-    private final UserAuthService userAuthService;
     private final RegisterService registerService;
 
-    @GetMapping("/getUserAuth/{username}")
-    @ResponseStatus(OK)
-    public UserAuthDTO getUserAuthDetails(@PathVariable String username) {
-        return userAuthService.getUserAuthDetails(username);
-    }
 
     @PostMapping("/register")
     @ResponseStatus(OK)

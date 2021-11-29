@@ -18,7 +18,7 @@ public class RegisterServiceImpl implements RegisterService {
     private final PasswordEncoder passwordEncoder;
 
 
-    // Register User
+    // -------------------- User Registration --------------------
     public UserDTO register(RegisterUserDTO registerUserDTO) {
         log.info("Registering user: " + registerUserDTO.getUsername());
         boolean isValidUsername = isValidUserUsername(registerUserDTO.getUsername());
@@ -31,7 +31,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
 
-    // Validation
+    // -------------------- User Registration --------------------
     public boolean isValidUserUsername(String username) {
         log.info("Validating username: " + username);
         var userResponse = userModelProxy.getUserByUsername(username);
@@ -47,6 +47,8 @@ public class RegisterServiceImpl implements RegisterService {
                 Objects.equals(userResponse.getHeaders().getFirst("error"), "User not found");
     }
 
+
+    // -------------------- Aux Methods --------------------
     private String encodeString(String value) {
         return passwordEncoder.encode(value);
     }
